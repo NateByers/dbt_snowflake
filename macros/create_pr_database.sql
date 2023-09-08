@@ -1,24 +1,8 @@
-{% macro create_pr_database(pr_database=none) -%}
+{% macro create_pr_database(pr_database="PR") -%}
 
-    {% if pr_database is none %}
-
-        pr_database={{ env_var("DBT_CLOUD_PR_ID") }}
-
-    {% elif env_var("DBT_DATABASE") == "PR" %}
-
-        {{ log("DBT_DATABASE:", info=True) }}
-
-        {{ log(env_var("DBT_DATABASE"), info=True) }}
-
-        {{ log("DBT_CLOUD_PR_ID:", info=True) }}
-
-        {{ log(env_var("DBT_CLOUD_PR_ID"), info=True) }}
+    {% if env_var("DBT_DATABASE") == "PR" %}
 
         pr_database={{ env_var("DBT_CLOUD_PR_ID") }}
-
-    {% else %}
-
-        pr_database="PR"
 
     {% endif %}
 
@@ -31,3 +15,5 @@
     {{ log("database grants given", info=True) }}
 
 {%- endmacro %}
+
+
