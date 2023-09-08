@@ -7,7 +7,7 @@
 
     {%- elif env_var('DBT_DATABASE')  == 'PR' -%}
 
-        {{ env_var('DBT_CLOUD_PR_ID') }}
+        DBT_PR_{{ env_var('DBT_CLOUD_PR_ID') }}
 
     {%- elif custom_database_name is none -%}
 
