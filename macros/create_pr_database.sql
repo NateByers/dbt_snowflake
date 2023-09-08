@@ -1,5 +1,7 @@
 {% macro create_pr_database() -%}
 
+    {{ log(env_var("DBT_CLOUD_PR_ID"), info=True) }}
+
     {% set create_database_sql="create database if not exists " +  env_var("DBT_CLOUD_PR_ID")  %}
     {% do run_query(create_database_sql) %}
     {{ log("database created", info=True) }}
