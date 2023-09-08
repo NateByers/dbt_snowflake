@@ -1,10 +1,18 @@
 {% macro create_pr_database(pr_database=none) -%}
 
-    {% if pr_database is none%}
+    {% if pr_database is none %}
 
         pr_database={{ env_var("DBT_CLOUD_PR_ID") }}
 
     {% elif env_var("DBT_DATABASE") == "PR" %}
+
+        {{ log("DBT_DATABASE:", info=True) }}
+
+        {{ log(env_var("DBT_DATABASE"), info=True) }}
+
+        {{ log("DBT_CLOUD_PR_ID:", info=True) }}
+
+        {{ log(env_var("DBT_CLOUD_PR_ID"), info=True) }}
 
         pr_database={{ env_var("DBT_CLOUD_PR_ID") }}
 
